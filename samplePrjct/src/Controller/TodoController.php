@@ -14,7 +14,7 @@ class TodoController extends AppController
 {
     /**
      * Index method
-     *
+     *　TODO一覧表示
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function index()
@@ -32,7 +32,7 @@ class TodoController extends AppController
 
     /**
      * Add method
-     *
+     *　TODO追加
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -53,7 +53,7 @@ class TodoController extends AppController
 
     /**
      * Edit method
-     *
+     *　TODO完了
      * @param string|null $id Todo id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -65,7 +65,7 @@ class TodoController extends AppController
         $todo = $this->Todo->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $todo = $this->Todo->patchEntity($todo, $this->request->getData());
-            if ($this->Bookmark->save($todo)) {
+            if ($this->Todo->save($todo)) {
                 $this->Flash->success(__('TODOが更新されました'));
 
                 return $this->redirect(['action' => 'index']);

@@ -22,6 +22,7 @@ class TodoTable extends Table
 
         $this->setTable('todo');
         $this->setDisplayField('todo');//表示用のカラムで１つしか設定できない
+        $this->setDisplayField('is_done');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -40,6 +41,12 @@ class TodoTable extends Table
             ->maxLength('todo', 1000)
             ->requirePresence('todo', 'create')
             ->notEmptyString('todo');
+        
+        $validator
+            ->scalar('is_done')
+            ->maxLength('is_done', 1000)
+            ->requirePresence('is_done', 'create')
+            ->notEmptyString('is_done');
 
         return $validator;
     }
