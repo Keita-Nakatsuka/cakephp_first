@@ -61,6 +61,7 @@ class TodoController extends AppController
     public function edit($id = null)
     {
         //！！変更で完了フラグをつけるためその処理を書かないといけなそう
+        //↑必要なしでviewからフラグを送信するだけでよい
 
         $todo = $this->Todo->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {

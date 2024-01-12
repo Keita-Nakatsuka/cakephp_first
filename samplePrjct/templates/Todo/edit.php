@@ -19,7 +19,8 @@
             <fieldset>
                 <legend><?= __('Todo完了') ?></legend>
                 <?= h($todo->todo) ?>
-                <?= h($todo->is_done = 1) ?>
+                <!-- パラメータの値を更新するにはこの記述 -->
+                <?= $this->Form->control('is_done',['type'=>'hidden','value' => 1]) ?>
                 <!-- ↑↓書き方はどちらでもOK -->
                 <?php 
                     //echo $todo->todo; 

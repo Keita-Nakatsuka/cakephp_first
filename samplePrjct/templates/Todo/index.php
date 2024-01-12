@@ -21,10 +21,15 @@
                 <?php foreach ($todo as $todo): ?>
                 <tr>
                     <td>
-                        <!-- formhelperにボタンはないためHTMLでbuttonを記述する -->
-                        <button onclick="location.href='<?= $this->Url->build(['action' => 'edit', $todo->id]) ?>'">
-                        <?= __('完了する') ?>
-                        </button>
+                        <!-- 完了フラグ立ってる場合は完了ボタンは非表示　-->
+                        <?php if ($todo->is_done != 1): ?>
+                            <!-- formhelperにボタンはないためHTMLでbuttonを記述する -->
+                            <button onclick="location.href='<?= $this->Url->build(['action' => 'edit', $todo->id]) ?>'">
+                            <?= __('完了する') ?>
+                            </button>
+                        <?php else: ?>
+                            <span>完了済</span>
+                        <?php endif; ?>
                     </td>
                     <td><?= h($todo->todo) ?></td>
                     <td><?= h($todo->modified) ?></td>
