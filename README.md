@@ -7,7 +7,15 @@
     nodeはhomebrewインストールしたときに入っていた？node -vでインストールされていること確認
     reactインストールしたいディレクトリでnpm create-react-app プロジェクト名　でインストール完了
     サーバーとの連携を考えてMAMPのhtdocsにインストール
-    npm startで開始、ターミナル終了で抜ける
+    npm run startで開始、終了はコマンド＋C２回かターミナル終了
+    tailwindcss導入
+    https://tailwindcss.com/docs/installation
+    公式に従ってインストール
+    index.cssは自分で追加して追記
+    App.cssに記載されているCSSはすべてコメントアウトしておいて
+    tailwindcss を読み込むためにoutput.cssをインポートする必要あり、と思ったがなくても大丈夫そう
+    なぜか反映されなくてかなり悩んdがClassNameではなくclassNameだった
+
 2024/1/13:独自MVC完成
             Formヘルパーのメソッドを覚えるとパラメータの更新が可能になるのでよく理解する必要がありそう
             今回使ったものは
@@ -44,9 +52,6 @@ V：indexにTODO一覧表示、完了ボタンでチェックマークがつく
 - [ ] maigretionファイルの作成
 
 ### フェーズ２
-
 - [x] reactインストール
-
 ### フェーズ３
-
-- [ ] tailwindcssを使う
+- [x] tailwindcssを使う
