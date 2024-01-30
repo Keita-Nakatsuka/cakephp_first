@@ -1,6 +1,10 @@
 ## 実行履歴とやることリスト
 
 進捗状況
+2024/1/30
+    サーバーとフロントを連携させるためにはreact rooterを使う必要がありそう
+    npm インストールでreact rooter domをインストールしてみる
+    react rooterを使って画面間のリンクをさせることに成功！
 2024/1/28:reactインストール
     reactの公式サイトでリアクトの基礎を学ぶ
     公式ではnext.jsのインストールが必須になっていたが嫌なのでreact単体をインストール
@@ -50,8 +54,9 @@ M:id,todo,is_done,modified,created
 C:indexに一覧表示、完了メソッド  
 V：indexにTODO一覧表示、完了ボタンでチェックマークがつく  
 - [ ] maigretionファイルの作成
-
 ### フェーズ２
 - [x] reactインストール
+- [x] materialUI導入
 ### フェーズ３
-- [x] tailwindcssを使う
+- [x] tailwindcss導入
+- [] cakephpとサーバー連携
