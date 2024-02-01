@@ -1,6 +1,7 @@
 /*  Home.js */
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import Fetch from "./fetch";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
           <Button variant="contained">contained</Button>
           <Button variant="outlined">outlined</Button>
           <p>NotFoundページは<Link to={`/Notfound`}>こちら</Link></p>
+          <Fetch />
       </div>
     </>
   );

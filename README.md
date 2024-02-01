@@ -1,6 +1,20 @@
 ## 実行履歴とやることリスト
 
 進捗状況
+2024/2/1
+    サーバーと連携を行うにはfetchを使えばいけそう
+    fetchはreactではなくjsのメソッドっぽい
+    fetch.jsのコンポーネントを作成してそこにアクセスするURL
+    この場合はAPIつまりController名を指定すればサーバーにアクセスできた
+    ただし、ローカル同士のアクセスなのでApacheにCORS設定を行わないとアクセスができず403になってしまう
+    .htaccessファイルにCORS許可の設定を追記する
+    <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+    </IfModule>
+    fetchの際にPOSTでControllerにアクセスすると403だがGETでアクセスするとディベロッパーツール上で200OKとなり
+    プレビューにcontrollerに記載したechoが表示されていたのでアクセスに成功したような気がする
 2024/1/30
     サーバーとフロントを連携させるためにはreact rooterを使う必要がありそう
     npm インストールでreact rooter domをインストールしてみる
@@ -59,4 +73,5 @@ V：indexにTODO一覧表示、完了ボタンでチェックマークがつく
 - [x] materialUI導入
 ### フェーズ３
 - [x] tailwindcss導入
-- [] cakephpとサーバー連携
+- [x] reactからfetchを使ってAPI呼び出し
+- [] phpでjsonを返すapi作成

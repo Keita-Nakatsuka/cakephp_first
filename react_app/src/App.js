@@ -7,6 +7,7 @@ import Notfound from "./Notfound";
 function App() {
   return (
     <Routes>
+        {/* lohochost;3000 はhHome.jsになる */}
         <Route path='/' element={<Home />} />
         <Route path='*' element={<Notfound />} />
     </Routes>
