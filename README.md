@@ -74,4 +74,7 @@ V：indexにTODO一覧表示、完了ボタンでチェックマークがつく
 ### フェーズ３
 - [x] tailwindcss導入
 - [x] reactからfetchを使ってAPI呼び出し
-- [] phpでjsonを返すapi作成
+- [] ControllerでDBから値を取得するAPIを作成
+- [] react側でAPIをリクエストしてDBの値を表示
+- [] reactで送信した値をDBに保存する
+- [] TODOリストのフロントをreactで実装する
