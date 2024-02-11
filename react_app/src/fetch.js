@@ -5,7 +5,7 @@ const Fetch = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost/samplePrjct/test', {method: 'GET'})
+        fetch('http://localhost/samplePrjct/bookmarkJson/getSampleJson', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
             setPosts(data)
