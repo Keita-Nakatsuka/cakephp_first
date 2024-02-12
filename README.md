@@ -1,6 +1,16 @@
 ## 実行履歴とやることリスト
 
 進捗状況
+2024/2/12
+      react側からControllerのJsonを呼び出すことに成功
+      APIの呼び出しはjsのfetch()を使った。reactではもっと高機能なaxioを使う方法もあるよう。
+      controllerのURLを指定して呼び出すとステータスは200okで帰って来るもののCORSエラーで
+      JSONは呼び出せない。
+      レスポンスヘッダーにCORSヘッダーを追加する必要がる模様。
+      コネクトではブラウザの拡張機能でmodheaderを入れていたがこれはそういうものなのだろう。
+      今回はControllerに直接オリジン許可を追記。
+      ControllerなのでbeforeFillterに記載することで各関数呼び出し前に実行される。
+      これでフロントからJSON呼び出しできたが、なぜかフロントでAPIを無限に呼び出しているので要修正
 2024/2/11
       とりあえずjsonを返すAPIの作成完了
       /Jsoncreate/getReactTestにアクセスすればJsonを取得できる
@@ -120,6 +130,6 @@ V：indexにTODO一覧表示、完了ボタンでチェックマークがつく
 - [x] tailwindcss導入
 - [x] reactからfetchを使ってAPI呼び出し
 - [x] ControllerでDBから値を取得するAPIを作成
-- [] react側でAPIをリクエストしてDBの値を表示
+- [x] react側でAPIをリクエストしてDBの値を表示
 - [] reactで送信した値をDBに保存する
 - [] TODOリストのフロントをreactで実装する

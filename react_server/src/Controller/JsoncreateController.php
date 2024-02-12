@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 namespace App\Controller;
+
+use Cake\Event\EventInterface;
 use Cake\Http\Response;
 //use Cake\Controller\Component\RequestHandlerComponent;
 use Cake\ORM\TableRegistry;
@@ -8,6 +10,19 @@ use Cake\ORM\TableRegistry;
 
 class JsoncreateController extends AppController
 {
+    /**
+     * CORSエラー対策でヘッダーに異なるオリジンからのリクエストを許可？する
+     */
+    public function beforeFilter(EventInterface $event)
+    {
+        // APIのエンドポイントでCORSヘッダーを追加
+        parent::beforeFilter($event);
+        $this->response = $this->response
+            ->withHeader('Access-Control-Allow-Origin', '*') // すべてのオリジンからのリクエストを許可する場合
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS') // 許可するHTTPメソッド
+            ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // 許可するヘッダー     
+    }
+
     //とりあえず取得できるか試したメソッド
     public function createJson()
     {

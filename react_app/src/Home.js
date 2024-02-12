@@ -16,6 +16,7 @@ const Home = () => {
           <Button variant="contained">contained</Button>
           <Button variant="outlined">outlined</Button>
           <p>NotFoundページは<Link to={`/Notfound`}>こちら</Link></p>
+          <p>以下fetch</p>
           <Fetch />
       </div>
     </>
