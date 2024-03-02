@@ -420,4 +420,12 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+
+    /**
+     * CORS許可設定
+     */
+    // 'Cors' => [
+    //     // Accept many origins
+    //     'AllowOrigin' => ['http://localhost:3000/Datapost']
+    // ]
 ];

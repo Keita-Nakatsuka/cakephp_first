@@ -23,6 +23,9 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+//独自追加
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
+use Cake\Routing\Router;
 
 return static function (RouteBuilder $routes) {
     /*
@@ -71,6 +74,7 @@ return static function (RouteBuilder $routes) {
          * routes you want in your application.
          */
         $builder->fallbacks();
+
     });
 
     /*
@@ -88,4 +92,17 @@ return static function (RouteBuilder $routes) {
      * });
      * ```
      */
+    
+     //ここから独自追加
+    Router::defaultRouteClass('DashedRoute');
+    Router::extensions(['json', 'xml']);
+    Router::scope('/', function (RouteBuilder $routes) {
+        // $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
+        //     'httponly' => true,
+        // ]));
+
+        // $routes->applyMiddleware('csrf');
+        //　フロントからfetchで指定するURLのエンドポイントを指定
+        $routes->connect('/api/save-data', ['controller' => 'FormData', 'action' => 'saveData', '_method' => 'POST']);
+    });
 };

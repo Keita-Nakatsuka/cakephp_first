@@ -64,6 +64,9 @@ class Application extends BaseApplication
         }
 
         // Load more plugins here
+        //　独自プラグインいれる場合は以下に記述する
+        //composer require ozee31/cakephp-cors
+        //$this->addPlugin('Cors');
     }
 
     /**
@@ -74,6 +77,21 @@ class Application extends BaseApplication
      */
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
     {
+        //CSRFチェック回避
+        // $csrf = new CsrfProtectionMiddleware(['httponly'=>true]);
+        // $csrf->skipCheckCallback(function($request) {
+        //     $controller = $request->getParam('controller');
+        //     $action = $request->getParam('action');
+        //     if (is_null($controller) || is_null($action)) {
+        //         return false;
+        //     }
+ 
+        //     if (strcmp($controller,'Samples') == 0) {
+        //         return true;
+        //     }
+        //     return false;
+        // });
+
         $middlewareQueue
             // Catch any exceptions in the lower layers,
             // and make an error page/response
@@ -95,13 +113,27 @@ class Application extends BaseApplication
             // Parse various types of encoded request bodies so that they are
             // available as array through $request->getData()
             // https://book.cakephp.org/4/en/controllers/middleware.html#body-parser-middleware
-            ->add(new BodyParserMiddleware())
+            ->add(new BodyParserMiddleware());
 
             // Cross Site Request Forgery (CSRF) Protection Middleware
             // https://book.cakephp.org/4/en/controllers/middleware.html#cross-site-request-forgery-csrf-middleware
-            ->add(new CsrfProtectionMiddleware([
-                'httponly' => true,
-            ]));
+            //CSRFをOFFにするためにコメントアウトした　２０２４・３・３
+            // ->add(new CsrfProtectionMiddleware([
+            //     'httponly' => true,
+            // ]));
+
+            // CSRFに関する設定
+            // $csrf = new CsrfProtectionMiddleware([
+            //     'httponly' => true,
+            // ]);
+            // // コールバックが `true` を返す場合、トークンのチェックはスキップされます。
+            // $csrf->skipCheckCallback(function ($request) {
+            //     // Skip token check for API URLs.
+            //     if ($request->getParam('controller') === 'Api') {
+            //         return true;
+            //     }
+            // });
+            // $middlewareQueue->add($csrf);
 
         return $middlewareQueue;
     }

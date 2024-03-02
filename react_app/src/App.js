@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "./home";
 import Notfound from "./Notfound";
+import Fetch from "./fetch";
+import Datapost from "./datapost";
 
 
 function App() {
@@ -10,6 +12,8 @@ function App() {
         {/* lohochost;3000 はhHome.jsになる */}
         <Route path='/' element={<Home />} />
         <Route path='*' element={<Notfound />} />
+        <Route path='/fetch' element={<Fetch />} />
+        <Route path='/datapost' element={<Datapost />} />
     </Routes>
   );
 }

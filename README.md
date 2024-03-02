@@ -1,6 +1,30 @@
 ## 実行履歴とやることリスト
 
 進捗状況
+2024/3/3
+        ReactフロントからPHPコントローラーにリクエストしてDBに値登録に成功！
+        かなりハマったところ
+        １：フロントからリクエストした際にCORSエラー
+            試したこと→コントローラーにCORS許可をbeforefillterに記載→ダメ
+            ozee31/cakephp-corsというCORS許可するプラグインをインストール→cakephpとのバージョンが合わないのか
+            composerでインストールした際にいくつかエラーが出る→Application.phpにプラグイン設定書いてもCorsエラーは変わらず
+            bootstrap.phpにCORS許可を記載→ネットで探したところ書き方が２種類くらいあったが一方はダメだった
+            結果：bootstrapに記載した今の方法で回避できた
+        ２：CSRFエラー
+            CORSエラーが出なくなったら次はこれが出てきた。
+            Application.phpのmiddlewareにCSRFエラー回避を書いたがダメ
+            デフォルトで記載のあった->add new CsrfProtectionMiddlewareの部分をコメントアウトして無効化
+            したらエラーがでなくなった
+        これらのエラー回避はローカル以外ではやらない方法
+2024/2/18
+       フロントからサーバにデータを送りDBに格納する処理にとりかかる
+       datapost.jsでfetchを使いエンドポイントを指定、値はformで送る
+       サーバ側はRequestgetControllerでリクエストデータを取得してDBに保存
+       処理は書いがフロントから送信時にCORSエラーでサーバーに送信できていない
+2024/2/17
+       無限ループ修正完了
+       はっきりはわからないが、useStateで値が更新される前にconsole.logを実行しているために発生していた模様
+       useEffectを使うことで解消。useEffectのさらなる理解が求められる
 2024/2/12
       react側からControllerのJsonを呼び出すことに成功
       APIの呼び出しはjsのfetch()を使った。reactではもっと高機能なaxioを使う方法もあるよう。
@@ -131,5 +155,5 @@ V：indexにTODO一覧表示、完了ボタンでチェックマークがつく
 - [x] reactからfetchを使ってAPI呼び出し
 - [x] ControllerでDBから値を取得するAPIを作成
 - [x] react側でAPIをリクエストしてDBの値を表示
-- [] reactで送信した値をDBに保存する
+- [x] reactで送信した値をDBに保存する
 - [] TODOリストのフロントをreactで実装する
